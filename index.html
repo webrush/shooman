@@ -1,0 +1,102 @@
+---
+layout: default
+main_title: פורטל שאיבת שומן | מדריך טיפולים והשוואת מחירים
+
+features:
+  footer: yes
+---
+  <div itemprop="mainContentOfPage" id="front-page">
+    <section id="find-treatment">
+      <div class="container forms-container">
+        <div class="row row-back">
+          <div class="col back-img">
+            <i class="hidden-sm hidden-xs"></i>
+          </div>
+
+          <div class="main-col col-md-8 col-xs-12">
+            <h1>להיפטר משומן עם המכונים המובילים</h1>
+          <div class="hidden-sm hidden-xs">
+              <div class="form-horizontal clearfix">
+                <div class="first-form hidden">
+                  <div class="icon-wrapper">
+                    <i class="fa icon-tel"></i>
+                  </div>
+
+                  <div class="header-form">
+                    <i class="fa icon-credit-card"></i> עד 50% חיסכון במחיר!
+                  </div>
+
+                  <p>השוואת מחירים ע״י 5 מכונים מובילים, תחסוך לכם הרבה כסף וזמן.</p>
+                  {% include form.html %}
+                  <small class="copy-rights">
+                  {% if page.form.text %}
+				  {% assign form_text = page.form.text %}
+				  {% else %}
+				  {% assign form_text = site.form.text %}
+				  {% endif %}
+				  {{ form_text }}
+                  </small>
+                </div>
+              </div>
+          </div>
+
+          <div class="second-form hidden hidden-sm hidden-xs">
+              <div class="form-horizontal clearfix">
+                <div class="second-form hidden">
+                  {% include second-form.html %}
+                  <small class="copy-rights">
+                  {% if page.form.text %}
+				  {% assign form_text = page.form.text %}
+				  {% else %}
+				  {% assign form_text = site.form.text %}
+				  {% endif %}
+				  {{ form_text }}
+                  </small>
+                </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="here-for-you">
+      <div class="container">
+        <div class="row">
+          <div class="mobile col-xs-12 hidden-lg hidden-md">
+	          {% include form-xs.html %}
+            <div class="promoted-links">
+              <h2 class="text-center">באיזה טיפול אתם מתעניינים</h2>
+              {% include homepage-promoted-links.html %}
+            </div>
+          </div>
+        </div>
+        <div class="row row-desktop">
+      <div class="col-md-6 col-right hidden-sm hidden-xs">
+        <h2><i class="fa icon-heart"></i> אנחנו כאן בשבילך</h2>
+        <p>טיפולים אסתטיים רפואיים הם תהליכים הדורשים קבלת החלטה נבונה על בסיס מידע מהימן, מקיף ומקצועי.</p>
+        <p>בפורטל שומן תוכלו לקרוא על כל הטכנולוגיות והמכשירים המתקדמים בעזרתם תוכלו לעצב את גופכם מחדש ולהיפטר ממצבורי שומן טורדניים ותופעות עור כגון צלוליטיס. אנחנו גם נדאג לעזור לכם למצוא את סוג הטיפול המתאים ואת המטפל המועדף.</p>
+      </div>
+      <div class="col-md-6 col-left hidden-sm hidden-xs">
+	  	<i class="fa icon-angle-circled-left fa-rotate-270"></i>
+        <div>
+          {% include homepage-promoted-links.html %}
+        </div>
+      </div>
+    </div>
+      </div>
+    </section>
+    <section id="articles" class="mobile">
+	  <div class="container">
+	    <i class="back-img hidden-sm hidden-xs"></i>
+	    <div class="row">
+	      <div class="col-md-5 col-xs-12 top">
+	        <h2><i class="fa icon-book"></i> מאמרים ומדריכים</h2>
+	        <p class="hidden-sm hidden-xs">כדי לבחור במנתח הפלסטי המתאים או בקליניקה הנכונה חשוב שתקבלו את כל המידע. המאמרים שלפניכם כוללים את כל מה שאתם צריכים.</p>
+	      </div>
+	    </div>
+	     {% include homepage-teasers.html %}
+	     {% include related-content-links-xs.html %}
+	  </div>
+	</section>
+	{% include related-content-links.html %}
+  </div>
