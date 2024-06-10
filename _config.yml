@@ -1,0 +1,49 @@
+
+name: Shooman
+description: פורטל שומן - מדיקארט
+author:
+  name: פורטל שומן - מדיקארט
+  email: admin@medicart.co.il
+url: http://shooman.co.il
+encoding: utf-8
+permalink: pretty
+timezone: Israel/Jerusalem
+
+
+features:
+ # footer:
+ # search:
+
+# Define the default action block info.
+default_information_block:
+   title: התייעצו איתנו בחינם!
+   text: לקביעת ייעוץ חינם ולקבלת 5 הצעות מחיר ללא כל התחייבות.
+   button: לחצו כאן להשוואת מחיר
+
+
+# Define the defaults for form.
+form:
+  title: כמה זה יעלה לי?
+  text:  אנחנו עובדים רק עם מכונים מובילים! הייעוץ הנו בחינם וללא כל התחייבות.
+  button: שלחו אלי 5 הצעות
+  teaser_button: לחצו כאן להשוואת מחירים
+  modal_title: ייעוץ טלפוני חינם
+  modal_button: שלחו אלי הצעות מחיר
+  src: shooman
+
+default_procedure:
+
+# Markdown library.
+markdown: kramdown
+#   auto_ids: true
+#   footnote_nr: 1
+#   entity_output: as_char
+#   toc_levels: 1..6
+#   use_coderay: false
+#   coderay:
+#     coderay_wrap: div
+#     coderay_line_numbers: inline
+#     coderay_line_numbers_start: 1
+#     coderay_tab_width: 4
+#     coderay_bold_every: 10
+#     coderay_css: style

@@ -1,0 +1,29 @@
+{% if include.image %}
+  {% assign image = '<img src="/images/homepage/find-treathment/card-icon.png">'%}
+{% endif%}
+
+{% if page.form.title %}
+  {% assign form_title = page.form.title %}
+{% else %}
+  {% assign form_title = site.form.title %}
+{% endif %}
+{% if page.form.text %}
+  {% assign form_text = page.form.text %}
+{% else %}
+  {% assign form_text = site.form.text %}
+{% endif %}
+
+<div class="form-horizontal {{ page.main_category }} clearfix">
+  <div class="first-form hidden">
+   <div class="icon-wrapper {{ page.main_category }}">
+     <img class="icon" src="/images/homepage/find-treathment/tel.png">
+   </div>
+    {% if include.title %}
+      <div class="header-form">{{ image }} {{ form_title }}</div>
+    {% endif %}
+    <p>{{ form_text }}</p>
+    {% include form.html %}
+    <small class="copy-rights">{{ form_text }}</small>
+  </div>
+</div>
+

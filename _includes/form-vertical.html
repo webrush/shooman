@@ -1,0 +1,29 @@
+{% if page.form.title %}
+  {% assign form_title = page.form.title %}
+{% else %}
+  {% assign form_title = site.form.title %}
+{% endif %}
+{% if page.form.text %}
+  {% assign form_text = page.form.text %}
+{% else %}
+  {% assign form_text = site.form.text %}
+{% endif %}
+
+<div class="vertical-form-wrapper {{ page.main_category }} forms-container">
+  <div class="form-vertical clearfix">
+    <div class="first-form hidden">
+      <div class="cost">
+        <div class="header-form hidden-lg hidden-md">{{ form_title }}</div>
+        <p class="hidden-lg hidden-md collapse-hide">{{ form_text }}</p>
+        <div class="icon-wrapper {{ page.main_category }}">
+         <i class="fa icon-tel"></i>
+         </div>
+        {% include form.html %}
+        <small class="hidden-sm hidden-xs footing collapse-hide">{{ form_text }}</small>
+      </div>
+    </div>
+  </div>
+  <div class="cost">
+    {% include second-form.html %}
+  </div>
+</div>

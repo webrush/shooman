@@ -1,0 +1,103 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html ng-app="medicartApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{ page.main_title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        {% if page.meta_tags.keywords %}
+          <meta name="keywords" content="{{ page.meta_tags.keywords | join: ', ' }}" />
+        {% endif %}
+        {% if page.meta_tags.description %}
+          <meta name="description" content="{{ page.meta_tags.description }}" />
+        {% endif %}
+        {% if page.meta_tags.canonical == nil %}
+          <link rel="canonical" href="{{ site.url }}/{{ page.permalink }}" />
+        {% else %}
+        <link rel="canonical" href="{{ page.meta_tags.canonical }}" />
+        {% endif %}
+        <link rel="stylesheet" href="/css/main.css">
+	</head>
+    <body itemscope itemtype="http://schema.org/MedicalWebPage" additionaltype="http://schema.org/WebPageElement">
+    {% include js/gtm.js %}
+    	<header>
+        <div class="top-wrapper">
+          <div class="container">
+            <div class="row logo-wrapper">
+              <div class="col-md-6">
+                <div class="logo">
+                  <a href="/">
+                    <i class="visible-lg visible-md fa icon-logo"></i>
+                    <i class="visible-xs visible-sm fa icon-logo"></i>
+                  </a></div>
+              </div>
+              	{% if site.features.search %}
+              <div class="col-md-6 search-wrapper visible-lg visible-md">
+                {% include search.html %}
+              </div>
+              	{% else %}
+              	{% endif %}
+            </div>
+            <div class="row nav-wrapper">
+              <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+				<i class="fa icon-menu"></i>
+              </button>
+              <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="navbar-collapse collapse nav-block">
+                <table class="header-main-menu hidden-xs hidden-sm">
+                  <tbody>
+                    <tr>
+                      {% include menu-menu.html %}
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- Mobile menu  -->
+                <ul class="header-main-menu hidden-lg hidden-md">
+                  {% include main-menu-xs.html %}
+                </ul> <!-- End of moblie menu -->
+              </nav>
+            </div>
+          </div> <!-- End of container -->
+        </div>
+      </header>
+      {{ content }}
+      <footer itemscope itemtype="http://schema.org/WPFooter">
+        <div class="container text-center">
+	         {% if page.features.footer %}
+          <div class="row footer-wrapper text-right">
+            <div itemscope itemtype="http://schema.org/SiteNavigationElement" class="col-xs-12">
+              {% include footer-menu-links.html %}
+            </div>
+              {% else %}
+              {% endif %}
+          </div>
+          	{% if site.features.search %}
+            <div class="row hidden-lg hidden-md">
+              <div class="col-xs-12 hidden-lg hidden-md text-center">
+                <div class="search-wrapper ">
+                  {% include search.html %}
+                </div>
+              </div>
+            </div>
+            {% else %}
+            {% endif %}
+            <div class="row hidden-lg hidden-md text-center">
+            </div>
+          <div class="row text-center rights">
+            {% include copyrights.html %}
+          </div>
+        </div>
+      </footer>
+      {% include form-xs.html %}
+      <!-- These divs allow to easily detect the current bootstrap display. -->
+      <div class="device-xs visible-xs"></div>
+      <div class="device-sm visible-sm"></div>
+      <div class="device-md visible-md"></div>
+      <div class="device-lg visible-lg"></div>
+      {% include backToTop.html %}
+	  <script src="/js/libs.js"></script>
+	  <script src="/js/scripts.js"></script>
+    </body>
+</html>

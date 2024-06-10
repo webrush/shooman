@@ -1,0 +1,160 @@
+{% comment %} Assign value to form id attribute {% endcomment %}
+  {% if include.id %}
+    {% assign form_id = include.id | prepend:'lead-form-' %}
+  {% else %}
+    {% assign form_id = 'lead-form' %}
+  {% endif %}
+
+  {% if include.shouldHide %}
+    {% assign hide = 'hide-button' %}
+  {% endif %}
+
+
+{% comment %} Assign value to form button {% endcomment %}
+  {% if include.id == 'modal' %}
+    {% if page.form.button %}
+      {% assign form_button = page.form.modal_button %}
+    {% else %}
+      {% assign form_button = site.form.modal_button %}
+    {% endif %}
+  {% else %}
+    {% if page.form.button %}
+      {% assign form_button = page.form.button %}
+    {% else %}
+      {% assign form_button = site.form.button %}
+    {% endif %}
+  {% endif %}
+  {% if page.form.teaser_button %}
+    {% assign teaser_button = page.form.teaser_button %}
+  {% else %}
+    {% assign teaser_button = site.form.teaser_button %}
+  {% endif %}
+
+
+{% comment %} Assign value SRC to hidden field form {% endcomment %}
+  {% if page.form.src %}
+    {% assign src = page.form.src %}
+  {% else %}
+    {% assign src = site.form.src %}
+  {% endif %}
+
+{% comment %} Assign values to the options form field {% endcomment %}
+  {% if page.procedure_type_options %}
+    {% assign options = page.procedure_type_options | append:'-procedure-options.html' %}
+  {% else %}
+    {% assign options = 'procedure-options.html' %}
+  {% endif %}
+
+<form method="post" id="{{ form_id }}" class="price-form" name="wf-form-lead-form" data-name="lead form">
+  <div class="col-33 collapse-hide">
+    <label for="Name_helper"> שם מלא</label>
+    <div class="input-wrapper">
+      <div class="icon fa icon-user"></div>
+      <div class="bubble"></div>
+      <input placeholder="שם מלא" data-type="name" class="has-icon name-helper" type="text" name="Name_helper" data-name="Name_helper">
+    </div>
+  </div>
+
+  <div class="col-33 collapse-hide">
+    <label for="Phone_helper">טלפון </label>
+    <div class="input-wrapper">
+      <div class="icon fa icon-phone"></div>
+      <div class="bubble"></div>
+      <input placeholder="מספר טלפון" data-type="phone" class="has-icon phone-helper" type="tel" name="Phone_helper" maxlength="12" data-name="Phone_helper" />
+    </div>
+    <small class="hidden-sm hidden-xs">כדי שנוכל להעביר לך את ההצעות</small>
+  </div>
+
+  <div class="col-33 collapse-hide">
+    <label for="Region[]">איזור בארץ</label>
+    <div class="input-wrapper">
+      <div class="select-arrow"></div>
+      <div class="icon fa icon-location "></div>
+      <div class="bubble"></div>
+      <select placeholder="איזור מגורים" data-type="location" class="has-icon region" name="Region[]" data-name="Region[]">
+        <option value="">איזור מגורים</option>
+        <option value="מחוז הצפון">מחוז הצפון</option>
+        <option value="טבריה ומסביב">טבריה ומסביב</option>
+        <option value="עכו - נהריה">עכו - נהריה</option>
+        <option value="חיפה">חיפה</option>
+        <option value="הקריות">הקריות</option>
+        <option value="חדרה - קיסריה">חדרה - קיסריה</option>
+        <option value="">-----</option>
+        <option value="אזורים בשרון">אזורים בשרון</option>
+        <option value="נתניה והסביבה">נתניה והסביבה</option>
+        <option value="רעננה - כפר סבא">רעננה - כפר סבא</option>
+        <option value="רמת השרון - הרצליה">רמת השרון - הרצליה</option>
+        <option value="">-----</option>
+        <option value="גוש דן והמרכז">גוש דן והמרכז</option>
+        <option value="תל אביב יפו">תל אביב יפו</option>
+        <option value="רמת גן - גבעתיים">רמת גן - גבעתיים</option>
+        <option value="בקעת אונו">בקעת אונו</option>
+        <option value="פתח תקווה וסביבתה">פתח תקווה וסביבתה</option>
+        <option value="ראשון לציון">ראשון לציון</option>
+        <option value="חולון - בת ים">חולון - בת ים</option>
+        <option value="">-----</option>
+        <option value="אזור השפלה">אזור השפלה</option>
+        <option value="רמלה - לוד">רמלה - לוד</option>
+        <option value="נס ציונה - רחובות">נס ציונה - רחובות</option>
+        <option value="אשדוד - גדרה">אשדוד - גדרה</option>
+        <option value="מודיעין - מכבים - רעות">מודיעין - מכבים - רעות</option>
+        <option value="">-----</option>
+        <option value="סובב ירושלים">סובב ירושלים</option>
+        <option value="">-----</option>
+        <option value="דרום הארץ">דרום הארץ</option>
+        <option value="נפת אשקלון">נפת אשקלון</option>
+        <option value="באר שבע והסביבה">באר שבע והסביבה</option>
+      </select>
+    </div>
+
+    <small class="hidden-sm hidden-xs">נעביר לך רק הצעות רלוונטיות מאזורך</small>
+  </div>
+
+  <div class="col-33 collapse-hide">
+    {% if site.default_procedure == null and page.procedure_type == null %}
+      <label class="hidden-sm hidden-xs" for="Procedure_Type[]">איזה טיפול מעניין אותך?</label>
+      <label class="hidden-lg hidden-md" for="Procedure_Type[]">טיפול מבוקש</label>
+      <div class="input-wrapper">
+        <div class="select-arrow"></div>
+        <div class="icon fa icon-search"></div>
+        <div class="bubble"></div>
+        <select placeholder="טיפול מבוקש" data-type="search" class="has-icon procedure-type" name="Procedure_Type[]" data-name="Procedure_Type[]">
+          {% include {{options}} %}
+        </select>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="hidden-lg hidden-md submit-wrapper teaser {{ hide }}">
+    <input class="w-button submit t-button turq {{ page.main_category }}" type="submit" value="{{ teaser_button }}" data-wait="שולח..." />
+  </div>
+
+  <div class="submit-wrapper {{ hide }}">
+    <input class="w-button submit turq {{ page.main_category }}" type="submit" value="{{ form_button }}" data-wait="שולח..." />
+  </div>
+
+  <div class="collapsed-button"><i class="fa icon-cancel"></i></div>
+
+  <div class="clearfix"></div>
+
+  {% if page.procedure_type %}
+  <input type="hidden" name="Procedure_Type[]" value="{{ page.procedure_type }}">
+  {% elsif site.default_procedure %}
+  <input type="hidden" name="Procedure_Type[]" value="{{ site.default_procedure }}">
+  {% endif %}
+
+  <input class="first-name" type="hidden" name="First_Name" value="" />
+  <input class="last-name" type="hidden" name="Last_Name" value="" />
+  <input class="phone-prefix" type="hidden" name="Phone_Prefix" value="" />
+  <input class="phone" type="hidden" name="Phone" value="" />
+  <input type="hidden" name="System_ID" value="organic" />
+  <input type="hidden" name="SRC" value="{{ src }}" />
+  <input type="hidden" name="Landing_Page" value="{{ site.url }}{{ page.url }}"/>
+  <input type="hidden" name="Sub_ID" value="" />
+  <input type="hidden" name="Pub_ID" value="" />
+  <input type="hidden" name="form" value="1" />
+  <input type="hidden" name="TYPE" value="29" />
+  <input type="hidden" name="Email" value="">
+  <input class="" type="hidden" name="Redirect_URL" value="{{ site.url }}/thx">
+
+</form>

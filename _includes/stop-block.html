@@ -1,0 +1,10 @@
+<div class="stop-block">
+  <i class="hidden-sm hidden-xs"></i>
+  <img class="hidden-lg hidden-md" src="../images/info/stop.svg" width="88" height="88">
+  {% if page.stop_block.title != '' %}
+    <h4>{{ page.stop_block.title }}</h4>
+  {% else %}
+    <h4>{{ page.title }}</h4>
+  {% endif %}
+  <p>{{ page.stop_block.text }}</p>
+</div>

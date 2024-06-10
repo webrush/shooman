@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<section itemprop="mainContentOfPage" id="price">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-sm-12 col-first">
+        <h1 itemprop="headline"><i class="hidden-sm hidden-xs fa icon-shekel"></i> {{ page.title }}</h1>
+
+        <div class="block">
+          {{ content }}
+        </div>
+      </div>
+
+      <div class="col-md-5 hidden-sm hidden-xs">
+        <h4 class="cost-head">
+	        {% if page.form.title %}
+			  {% assign form_title = page.form.title %}
+			{% else %}
+			  {% assign form_title = 'קבלו הצעת מחיר מדוייקת' %}
+			{% endif %}
+			{{ form_title }}
+        </h4>
+        <div class="sticky-form">
+          {% include form-vertical.html %}
+        </div>
+      </div>
+    </div>
+    {% include related-content-links-xs.html %}
+  </div>
+</section>
+{% include related-content-links.html %}
+

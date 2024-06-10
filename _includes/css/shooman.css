@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+@media (min-width:1047px) {
+
+#front-page #find-treatment .row-back .back-img i {
+	background: url(../images/homepage/find-treathment/main-background.svg) no-repeat;
+    position:absolute;
+    top:156px;
+    left:-10px;
+    width: 523px;
+    height: 697px;
+}
+.block .category-image.fat {
+    background-image:url(../images/block/xs-fat-bg.png);
+}
+.second-form .submit.fat,
+form.price-form .submit.fat {
+    background:#ff5165;
+}
+.second-form .submit.fat:active,
+.second-form .submit.fat:hover,
+form.price-form .submit.fat:active,
+form.price-form .submit.fat:hover {
+    background-color:#cf3436;
+}
+.form-horizontal .icon-wrapper.fat {
+    background:#ff5165;
+}
+.form-horizontal .icon-wrapper.fat.active {
+    background-color:#cf3436;
+}
+#info #lead-modal-wrapper .frame.fat,
+#info .form-horizontal.fat {
+    background:#6ebfc0 url(../images/form/hair-treatment.png);
+}
+#price .col-md-5 .vertical-form-wrapper.fat {
+    background:#aa5098 url(../images/form/hair-treatment.png);
+}
+#pros .col-last .vertical-form-wrapper.fat {
+    background:#aa5098 url(../images/form/hair-treatment.png);
+}
+#side-nav .extended article .summary.fat {
+    color:#d9a339;
+}
+header .nav-wrapper .nav-block .header-main-menu .main-category.fat a:active .underline,
+header .nav-wrapper .nav-block .header-main-menu .main-category.fat a:hover .underline {
+    border-bottom:4px #aa5098 solid;
+    padding-bottom:5px;
+}
+header .nav-wrapper .nav-block .header-main-menu .main-category.fat a:hover {
+    color:#564f4d;
+}
+header .nav-wrapper .nav-block .header-main-menu .main-category.fat .menu-container {
+    background:#aa5098;
+}
+header .nav-wrapper .nav-block .header-main-menu .main-category.fat .menu-container:before {
+    border-bottom-color:#aa5098;
+}
+header .nav-wrapper .nav-block .header-main-menu .main-category.fat .menu-container .sub-category h3 a:hover {
+    opacity:.7;
+}
+header .nav-wrapper .nav-block .header-main-menu .main-category.fat .menu-container .end-category li:hover {
+    background-color:#5d9aa0;
+}
+header .nav-wrapper .nav-block .header-main-menu .main-category.fat .dropdown-link:before {
+    border-bottom-color:#aa5098;
+}
+}

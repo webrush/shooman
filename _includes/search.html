@@ -1,0 +1,9 @@
+<div ng-controller="SearchCtrl">
+  <ui-select ng-model="post.selected" theme="select2" ng-disabled="disabled" >
+    <ui-select-match placeholder="חיפוש באתר"></ui-select-match>
+
+    <ui-select-choices repeat="post in content | wordsFilter: $select.search | limitTo:5">
+      <a href="{( post.url )}" ng-bind-html="post.title | highlight: $select.search"></a>
+    </ui-select-choices>
+  </ui-select>
+</div>

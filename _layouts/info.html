@@ -1,0 +1,164 @@
+---
+layout: default
+---
+<section id="info">
+  <div class="container">
+    <div class="row row-top">
+      <div class="col-md-4 col-xs-12 col-first">
+        <div class="header"><img src="../images/info/mobile/{{ page.main_category }}-mobile.svg" height="220" class="visible-xs visible-sm">
+         <div class="mobile-header hidden-lg hidden-md">{{ page.title }}</div>
+         <div itemprop="about" itemscope itemtype="http://schema.org/about" class="block hidden-sm hidden-xs">
+          <h4 itemprop="name">{{ page.about.title }}</h4>
+          <p>{{ page.about.text | join: '<br>' }}</p>
+          <div class="triangle">
+            <div class="triangle-inner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-xs-12 col-last forms-container">
+      <div class="hidden-sm hidden-xs">
+        <div class="form-horizontal clearfix {{ page.main_category }}">
+          <div class="first-form hidden">
+            <div class="icon-wrapper {{ page.main_category }}">
+              <i class="fa icon-tel"></i>
+            </div>
+
+            <div class="header-form">
+              {% if page.form.title %}
+              {% assign form_title = page.form.title %}
+              {% else %}
+              {% assign form_title = 'לפני שמטפלים - משווים מחירים!' %}
+              {% endif %}
+              {{ form_title }}
+            </div>
+
+            {% include form.html %}
+            <small class="copy-rights">
+            {% if page.form.text %}
+			  {% assign form_text = page.form.text %}
+			{% else %}
+			  {% assign form_text = site.form.text %}
+			{% endif %}
+			{{ form_text }}
+            </small>
+          </div>
+        </div>
+      </div>
+      {% include second-form-new.html %}
+      <div class="row row-midle">
+        <div class="col-md-8 col-xs-12 col-first">
+          <div itemprop="mainContentOfPage" class="block">
+            <h1 itemprop="headline" class="hidden-sm hidden-xs">{{ page.title }}</h1>
+            {{ content }}
+          </div>
+          {% include related-content-links-xs.html %}
+        </div>
+
+        <div class="col-md-4 hidden-xs hidden-sm col-last">
+	      <img src="/images/info/{{ page.main_category }}-primary.png" class="img-responsive">
+          <div class="information-block">
+            <div class="header-block text-center">
+              {% if page.information_block.title %}
+              {{ page.information_block.title }}
+              {% else %}
+              {{ site.default_information_block.title }}
+              {% endif %}
+            </div>
+            <p class="text-center">
+              {% if page.information_block.text %}
+              {{ page.information_block.text }}
+              {% else %}
+              {{ site.default_information_block.text }}
+              {% endif %}
+            </p>
+            <a href data-toggle="modal" data-target="#lead-modal-wrapper">
+              {% if page.information_block.button %}
+              {{ page.information_block.button }}
+              {% else %}
+              {{ site.default_information_block.button }}
+              {% endif %}
+            </a>
+          </div>
+          <div class="art-image">
+            <img src="/images/info/{{ page.main_category }}-secondery.svg">
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-bottom hidden-xs hidden-sm">
+        <div class="col-md-4 col-first">
+          {% include stop-block.html %}
+        </div>
+        <div class="col-md-7 col-last hidden-form">
+          <div class="col-md-12 forms-container anim">
+            <div class="hidden-sm hidden-xs">
+              <div class="form-horizontal clearfix {{ page.main_category }}">
+                <div class="first-form hidden">
+                  <div class="icon-wrapper {{ page.main_category }}">
+                    <i class="fa icon-tel"></i>
+                  </div>
+
+                  <div class="header-form">
+                    {% if page.form.title %}
+                    {% assign form_title = page.form.title %}
+                    {% else %}
+                    {% assign form_title = 'לפני שמטפלים - משווים מחירים!' %}
+                    {% endif %}
+                    {{ form_title }}
+                  </div>
+
+                  {% include form.html %}
+                  <small class="copy-rights">
+                  {% if page.form.text %}
+				  {% assign form_text = page.form.text %}
+				  {% else %}
+				  {% assign form_text = site.form.text %}
+				  {% endif %}
+				  {{ form_text }}
+                  </small>
+                </div>
+              </div>
+            </div>
+            {% include second-form-new.html %}
+          </div>
+        </div>
+        <div class="col-md-8 forms-container modal hidden-sm hidden-xs" id="lead-modal-wrapper" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="frame clearfix {{ page.main_category }}">
+            <a class="close" data-dismiss="modal"><span aria-hidden="true"><i class="fa icon-cancel"></i></span><span class="sr-only">סגור</span></a>
+            <div class="col-md-12 forms-container">
+              <div class="hidden-sm hidden-xs">
+                <div class="form-horizontal clearfix {{ page.main_category }}">
+                  <div class="first-form hidden">
+                    <div class="icon-wrapper {{ page.main_category }}">
+                      <i class="fa icon-tel"></i>
+                    </div>
+
+                    <div class="header-form">
+                      {% if page.form.title %}
+                      {% assign form_title = page.form.title %}
+                      {% else %}
+                      {% assign form_title = 'לפני שמטפלים - משווים מחירים!' %}
+                      {% endif %}
+                      {{ form_title }}
+                    </div>
+
+                    {% include form.html %}
+                    <small class="copy-rights">
+	                  {% if page.form.text %}
+					  {% assign form_text = page.form.text %}
+					  {% else %}
+					  {% assign form_text = site.form.text %}
+					  {% endif %}
+					  {{ form_text }}
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+         </div>
+       </div>
+        </div>
+     {% include related-content-links.html %}
+   </section>

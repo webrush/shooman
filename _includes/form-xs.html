@@ -1,0 +1,21 @@
+{% if page.form.title %}
+  {% assign form_title = page.form.title %}
+{% else %}
+  {% assign form_title = site.form.title %}
+{% endif %}
+{% if page.form.text %}
+  {% assign form_text = page.form.text %}
+{% else %}
+  {% assign form_text = site.form.text %}
+{% endif %}
+<div class="floating-form mobile-lead-form visible-sm visible-xs collapsed collapsable">
+              <div class="vertical-form-wrapper">
+                <div class="first-form hidden">
+                  <div class="cost">
+                        <div class="center-text header-form collapse-hide hidden-lg hidden-md">{{ form_title }}</div>
+                        <p class="center-text hidden-lg hidden-md collapse-hide">{{ form_text }}</p>
+                    {% include form.html shouldHide=true %}
+                  </div>
+                </div>
+              </div>
+            </div>

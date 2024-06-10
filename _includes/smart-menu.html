@@ -1,0 +1,50 @@
+{% for main_category_weight in (1..site.menu.main_category_weight) %}
+  {% for post in site.posts %}
+    {% if post.menu.main_category and post.menu.weight == main_category_weight %}
+
+    {% comment %} Find the matching "sub_category" in order to add class="active" to the main menu {% endcomment %}
+    {% assign class_name = ''%}
+  {% if page.menu.parent_category %}
+    {% for sub_category in post.menu.sub_categories %}
+      {% if sub_category == page.menu.parent_category  %}
+        {% assign class_name = 'active'%}
+      {% endif %}
+    {% endfor %}
+  {% comment %} Find the matching "main_category" in order to add class="active" to the main menu {% endcomment %}
+  {% elsif page.menu.main_category %}
+    {% if post.menu.main_category == page.menu.main_category %}
+      {% assign class_name = 'active'%}
+    {% endif %}
+  {% comment %} Find the matching "main_category" by relationship in order to add class="active" to the main menu {% endcomment %}
+  {% elsif page.menu.relationship %}
+    {% if post.menu.main_category == page.menu.relationship %}
+      {% assign class_name = 'active'%}
+    {% endif %}
+  {% endif %}
+
+      <td class="main-category {{ post.main_category }} dropdown">
+        <a itemprop="url" href="{{ post.url }}" class="dropdown-link {{ class_name }}"> <span class="underline" itemprop="name">{{ post.menu.main_category }}</span></a>
+        <div class="show-menu">
+          <ul class="menu-container hidden-xs hidden-sm">
+            {% for sub_category in post.menu.sub_categories %}
+            <li class="sub-category">
+              <div class="box">
+                <h3>{{ sub_category }}</h3>
+                <ul class="end-category">
+                  {% for sub_category_weight in (1..site.menu.sub_category_weight) %}
+                    {% for post in site.posts %}
+                      {% if post.menu.parent_category and post.menu.parent_category == sub_category and post.menu.weight == sub_category_weight %}
+                      <li><a itemprop="url" href="{{ post.url }}"> <span itemprop="name">{{ post.menu.title }}</span></a></li>
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </td>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
