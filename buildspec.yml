@@ -1,0 +1,48 @@
+version: 0.2
+
+env:
+  variables:
+    bucket_name: "shooman.co.il"
+    LC_CTYPE: "C.UTF-8"
+    LANG: "he_IL.UTF-8"
+    LANGUAGE: "he_IL.UTF-8"
+    cloudfront_distribution_id: "E1Q8KWU5M4QYF0"
+
+phases:
+  install:
+    runtime-versions:
+      ruby: 2.6
+    commands:
+      - gem install bundler -v 2.4.22
+      - bundle install
+
+  pre_build:
+    commands:
+      - export LANG="he_IL.UTF-8"
+
+  build:
+    commands:
+      - echo "******** Logs copying files to S3 ******" > s3-log.txt
+
+      - echo "******** Building Jekyll site ********"
+      - JEKYLL_ENV=production bundle exec jekyll build
+
+      - echo "******** Remove extension from files before deploying *********"
+      - find . -iname '*.gz' -type f | while read NAME ; do mv "${NAME}" "${NAME%.gz}"; done;
+
+      - echo "******** Remove extension from files before deploying *********"
+      - find . ! -iname 'index.html' ! -iname 'google*.html' -iname '*.html' -type f | while read NAME ; do mv "${NAME}" "${NAME%.html}"; done;
+
+      - echo "******** Copying files to S3 *********"
+
+      - echo "********** Copying files with content type... **********"
+      - aws s3 sync _site/ s3://${bucket_name}/ --exclude "*" --include "*.*" --exclude "index.html" --exclude "packag*.*" --exclude "s3-*.*" --exclude "gulpfile.js" --exclude "buildspec.yml" --exclude "README.md" --cache-control "max-age=31536000" --content-encoding "gzip" | tee -a s3-log.txt
+
+      - echo "******** Copying files without content type... *********"
+      - aws s3 sync _site/ s3://${bucket_name}/ --exclude "*.*" --include "index.html" --content-type "text/html; charset=utf-8" --cache-control "max-age=86400"  --content-encoding "gzip" | tee -a s3-log.txt
+
+  post_build:
+    commands:
+      - echo "******** Invalidate CloudFront Cache ********"
+      - aws configure set preview.cloudfront true
+      - aws cloudfront create-invalidation --distribution-id ${cloudfront_distribution_id} --paths "/*"
