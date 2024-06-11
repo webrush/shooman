@@ -36,10 +36,10 @@ phases:
       - echo "******** Copying files to S3 *********"
 
       - echo "********** Copying files with content type... **********"
-      - aws s3 sync _site/ s3://${bucket_name}/ --exclude "*" --include "*.*" --exclude "index.html" --exclude "packag*.*" --exclude "s3-*.*" --exclude "gulpfile.js" --exclude "buildspec.yml" --exclude "README.md" --cache-control "max-age=31536000" --content-encoding "gzip" | tee -a s3-log.txt
+      - aws s3 sync _site/ s3://shooman.co.il/ --exclude "*" --include "*.*" --exclude "index.html" --exclude "packag*.*" --exclude "s3-*.*" --exclude "gulpfile.js" --exclude "buildspec.yml" --exclude "README.md" --cache-control "max-age=31536000" --content-encoding "gzip" | tee -a s3-log.txt
 
       - echo "******** Copying files without content type... *********"
-      - aws s3 sync _site/ s3://${bucket_name}/ --exclude "*.*" --include "index.html" --content-type "text/html; charset=utf-8" --cache-control "max-age=86400"  --content-encoding "gzip" | tee -a s3-log.txt
+      - aws s3 sync _site/ s3://shooman.co.il/ --exclude "*.*" --include "index.html" --content-type "text/html; charset=utf-8" --cache-control "max-age=86400"  --content-encoding "gzip" | tee -a s3-log.txt
 
   post_build:
     commands:
