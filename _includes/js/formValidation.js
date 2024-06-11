@@ -93,7 +93,7 @@ $(document).ready(function () {
     $(".second-form form").submit(function (event) {
       if (validateEmail($('.email', this))) {
         $(this).parents('.forms-container').find('form.price-form').find('[name="Email"]').val($('.email', this).val());
-        $(this).parents('.forms-container').find('form.price-form').attr('action', "https://6erjdf0ki1.execute-api.eu-west-1.amazonaws.com/form/");
+        $(this).parents('.forms-container').find('form.price-form').attr('action', "https://6erjdf0ki1.execute-api.eu-west-1.amazonaws.com/form");
         window.realSubmit = true;
         if (isMobile()) {
            $(this).parents('.forms-container').find('form.price-form').find('[name="Sub_ID"]').val('mobile');
@@ -125,7 +125,7 @@ $(document).ready(function () {
 
       if (globalStatus) {
         localStorage.setItem('firstFormSubmitted', true);
-        $form.attr('action', "https://6erjdf0ki1.execute-api.eu-west-1.amazonaws.com/form/");
+        $form.attr('action', "https://6erjdf0ki1.execute-api.eu-west-1.amazonaws.com/form");
         window.realSubmit = true;
         $form.submit();
       }
